@@ -1,18 +1,29 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-//import Palette from './Palette';
-//import SeedColors from './seedColors';
-//import { generatePalette } from './colorHelper';
+import Palette from './Palette';
+import SeedColors from './seedColors';
+import { generatePalette } from './colorHelper';
+import PaletteList from './PaletteList';
 
 function App() {
+  const routes = SeedColors.map((color, index) => {
+    return (
+      <Route
+        exact
+        path={`/palette/${color.id}`}
+        element={<Palette palette={generatePalette(SeedColors[index])} />}
+      />
+    );
+  });
+
   return (
     <Routes>
-      <Route exact path='/' element={<h1>test</h1>} />
-      <Route exact path='/palette/:id' element={<h1>test 2</h1>} />
+      <Route exact path='/' element={<PaletteList palettes={SeedColors} />} />
+      {routes}
     </Routes>
 
     // <div>
-    //   <Palette palette={generatePalette(SeedColors[4])} />
+    //   <Palette palette={} />
     // </div>
   );
 }
