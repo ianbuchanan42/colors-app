@@ -48,3 +48,13 @@
 .rc-slider-rail {
   height: 8px;
 }
+
+.select-container {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.select-container .select:focus,
+.select-container .select:active {
+  border: none;
+}
