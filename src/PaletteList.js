@@ -6,7 +6,7 @@ import { withStyles } from '@mui/styles';
 
 const styles = {
   root: {
-    height: '100%',
+    height: '100vh',
     display: 'flex',
     backgroundColor: 'blue',
     alignItems: 'flex-start',
