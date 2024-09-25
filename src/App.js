@@ -21,10 +21,6 @@ function App() {
       <Route exact path='/' element={<PaletteList palettes={SeedColors} />} />
       {routes}
     </Routes>
-
-    // <div>
-    //   <Palette palette={} />
-    // </div>
   );
 }
 
