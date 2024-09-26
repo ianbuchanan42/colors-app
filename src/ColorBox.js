@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ColorBox.css';
 
 class ColorBox extends Component {
@@ -10,13 +10,13 @@ class ColorBox extends Component {
     this.changeCopyState = this.changeCopyState.bind(this);
   }
   changeCopyState() {
-    console.log('copy');
+    // console.log('copy');
     this.setState({ copied: true }, () => {
       setTimeout(() => this.setState({ copied: false }), 1500);
     });
   }
   render() {
-    const { name, background, id, paletteId } = this.props;
+    const { name, background, id, paletteId, showLink } = this.props;
     const { copied } = this.state;
 
     return (
@@ -36,13 +36,15 @@ class ColorBox extends Component {
             </div>
             <button className='copy-button'>Copy</button>
           </div>
-          <Link
-            // janky!!!!!
-            to={`../../palette/${paletteId}/${id}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className='see-more'>More</span>
-          </Link>
+          {showLink && (
+            <Link
+              // janky!!!!!
+              to={`../../palette/${paletteId}/${id}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className='see-more'>More</span>
+            </Link>
+          )}
         </div>
       </CopyToClipboard>
     );
